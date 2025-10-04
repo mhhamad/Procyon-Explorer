@@ -80,29 +80,37 @@ Make sure you have the following installed on your machine:
 
 4. **Run the Application**
 
-- 🛠️ Option 1: Development Mode (Recommended for Development)
+   1. 🖥️ Frontend:
 
-  ```bash
-   npm run dev
-   # or
-   yarn dev
-   # or
-   pnpm dev
-  ```
+      - 🛠️ Option 1: Development Mode (Recommended for Development)
 
-  - Use this for: Active development with hot-reload.
+        ```bash
+        npm run dev
+        # or
+        yarn dev
+        # or
+        pnpm dev
+        ```
 
-- 🚀 Option 2: Production Build (Recommended for Testing Final Version)
+      - Use this for: Active development with hot-reload.
 
-  ```bash
-   npm run build
-   npm run preview
-   # or
-   yarn build
-   yarn preview
-   # or
-   pnpm build
-   pnpm preview
-  ```
+      - 🚀 Option 2: Production Build (Recommended for Testing Final Version)
 
-  - Use this for: Testing the optimized production version
+        ```bash
+        npm run build
+        npm run preview
+        # or
+        yarn build
+        yarn preview
+        # or
+        pnpm build
+        pnpm preview
+        ```
+
+        - Use this for: Testing the optimized production version
+
+   2. 🔧 Backend Server:
+      - Rune server
+      ```bash
+        node server.js
+      ```
