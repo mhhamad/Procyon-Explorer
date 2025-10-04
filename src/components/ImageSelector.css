@@ -1,0 +1,107 @@
+/* src/components/ImageSelector.css */
+/* Image Selector Container */
+.image-selector {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  height: fit-content;
+}
+
+.selector-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Image List */
+.image-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Image Card */
+.image-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.image-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateX(4px);
+}
+
+.image-card.selected {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: #667eea;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.image-card-content {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Image Info */
+.image-info {
+  flex: 1;
+}
+
+.image-info h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.image-info p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+}
+
+/* Selected Indicator */
+.selected-indicator {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #667eea;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .image-selector {
+    margin-bottom: 1rem;
+  }
+
+  .image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}

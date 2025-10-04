@@ -1,0 +1,210 @@
+/* src/components/ImageViewer.css */
+
+/* Image Viewer Container */
+.image-viewer {
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.viewer-header {
+  margin-bottom: 1.5rem;
+}
+
+.viewer-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.viewer-header p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.95rem;
+}
+
+/* Viewer Wrapper */
+.viewer-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* OpenSeadragon Viewer */
+.openseadragon-viewer {
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  pointer-events: none;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-overlay p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+}
+
+/* Error Overlay */
+.error-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  background: rgba(220, 38, 38, 0.1);
+  border: 2px solid rgba(220, 38, 38, 0.5);
+  border-radius: 8px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.error-hint {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.error-hint code {
+  display: block;
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  font-family: "Courier New", monospace;
+  font-size: 0.8rem;
+}
+
+/* Viewer Controls */
+.viewer-controls {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+  display: flex;
+  gap: 0.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.control-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  width: 36px;
+  height: 36px;
+}
+
+.control-btn:hover {
+  background: rgba(102, 126, 234, 0.3);
+  border-color: #667eea;
+  transform: scale(1.05);
+}
+
+.control-btn:active {
+  transform: scale(0.95);
+}
+
+/* Viewer Tips */
+.viewer-tips {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(102, 126, 234, 0.1);
+  border-left: 3px solid #667eea;
+  border-radius: 4px;
+}
+
+.viewer-tips p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+}
+
+.viewer-tips strong {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .viewer-controls {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  .control-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0.25rem;
+  }
+
+  .openseadragon-viewer {
+    height: 400px !important;
+  }
+}
+
+/* Save status and IO buttons in header */
+.save-status {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 6px 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.io-buttons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.io-buttons .control-btn {
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+}
