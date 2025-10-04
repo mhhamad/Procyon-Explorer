@@ -69,7 +69,16 @@ Make sure you have the following installed on your machine:
     pnpm install
    ```
 
-3. **Run the Application**
+3. **Get The Image Ready**
+
+   1. Add Image(s) to _assets_ file, try (https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/#:~:text=In%20January%20of%202025%2C%20NASA&#x27;s,were%20challenging%20to%20stitch%20together.)
+   2. make the tiles
+
+   ```bash
+     npm run make-tiles
+   ```
+
+4. **Run the Application**
 
 - 🛠️ Option 1: Development Mode (Recommended for Development)
 

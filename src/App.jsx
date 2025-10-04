@@ -1,3 +1,4 @@
+// src/App.jsx
 import React, { useState, useCallback } from 'react';
 import ImageSelector from './components/ImageSelector';
 import ImageViewer from './components/ImageViewer';

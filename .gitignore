@@ -32,7 +32,7 @@ dzifile_files/
 public/tiles
 
 # Ignore ALL files in Assets folder (images are too large)
-Assets/*
+assets/*
 *.png
 *.jpg
 *.jpeg
@@ -40,5 +40,5 @@ Assets/*
 *.tiff  
 *.tif
 # But keep the Assets folder itself
-!Assets/
-!Assets/.gitkeep
+!assets/
+!assets/.gitkeep
