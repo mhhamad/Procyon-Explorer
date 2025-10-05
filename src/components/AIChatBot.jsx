@@ -3,19 +3,57 @@ import { useState, useRef, useEffect } from 'react';
 import ChatbotIcon from './AIChatBotComponents/ChatbotIcon';
 import ChatForm from './AIChatBotComponents/ChatForm';
 import ChatMessage from './AIChatBotComponents/ChatMessage';
-import { info } from './AIChatBotComponents/info';
-
-
 import './AIChatBot.css';
-const AIChatBot = () => {
-    const [chatHistory, setChatHistory] = useState([{
-        hideInChat: true,
-        role: 'assistant',
-        text: info
-    }]);
+
+
+const AIChatBot = ({selectedImage, annotations}) => {
+    const [chatHistory, setChatHistory] = useState([
+    //     {
+    //     hideInChat: true,
+    //     role: 'assistant',
+    //     text: info
+    // }
+    // Strat with empty
+]);
     const [showChatbot, setShowChatbot] = useState(false);
     const chatBodyRef = useRef();
 
+        const generateSystemPrompt = (image, allAnns) => {
+        // Find annotations that belong to the currently selected image
+        const relevantAnnotations = allAnns.filter(a => a.imageId === image.id);
+
+        let context = `You are Sameer, an expert astronomical AI assistant for the Procyon Explorer application. Your answers should be concise and helpful.`;
+        
+        if (image) {
+            context += `\nThe user is currently viewing the image titled '${image.name}', which is described as '${image.description}'.`;
+        }
+
+        if (relevantAnnotations.length > 0) {
+            const annotationSummary = relevantAnnotations.map(a => `- Label: '${a.label}' (Priority: ${a.priority || 'n/a'}, Tags: ${(a.tags || []).join(', ') || 'none'})`).join('\n');
+            context += `\n\nThis image has the following ${relevantAnnotations.length} annotations:\n${annotationSummary}`;
+        } else {
+            context += `\n\nThis image has no annotations yet.`;
+        }
+
+        return context;
+    };
+
+    useEffect(() => {
+        if (selectedImage && annotations) {
+            const systemPrompt = generateSystemPrompt(selectedImage, annotations);
+            
+            // Reset the chat history with the new system context whenever the image or annotations change.
+            // This ensures the bot's knowledge is always up-to-date.
+            setChatHistory([
+                {
+                    hideInChat: true, // This comes from your original code
+                    role: 'assistant',
+                    text: systemPrompt
+                }
+            ]);
+        }
+    }, [selectedImage, annotations]);
+    
     const generateBotResponse = async (history) => {
         const updateHistory = (botReply) => {
 

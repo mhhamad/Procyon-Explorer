@@ -127,7 +127,7 @@ function App() {
 
   return (
     <div className="app">
-      <AIChatBot />
+      <AIChatBot selectedImage={selectedImage} annotations={allAnnotations}/>
       <header className="app-header">
         <div className="header-content">
           <h1>Procyon Explorer</h1>

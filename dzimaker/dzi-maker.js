@@ -9,12 +9,6 @@ const dziName = path.join("./public/tiles/test1", "image"); // ← CHANGE THIS!
 
 console.log("🚀 Starting tile generation...");
 
-// try {
-//   await fs.rm(dziName + "_files", { recursive: true, force: true });
-//   await fs.rm(dziName + ".dzi", { force: true });
-//   console.log("🧹 Old tiles removed");
-// } catch (e) {}
-
 try {
   await sharp(inputImage, { limitInputPixels: false })
     .tile({
