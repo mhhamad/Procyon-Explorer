@@ -12,6 +12,7 @@ _2025 NASA Space Apps Challenge - Embiggen Your Eyes!_
   - Mahmood Hamad
 - **Contact:**
   - its.yamanadeeb.0@gmail.com
+  - mhhamad.se@gmail.com
 
 ---
 
@@ -72,7 +73,7 @@ Make sure you have the following installed on your machine:
 3. **Get The Image Ready**
 
    1. Add Image(s) to _assets_ file, try (https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/#:~:text=In%20January%20of%202025%2C%20NASA&#x27;s,were%20challenging%20to%20stitch%20together.)
-   2. make the tiles
+   2. Make the tiles
 
    ```bash
      npm run make-tiles
