@@ -26,11 +26,11 @@ The platform enables users to seamlessly navigate enormous astronomical datasets
 
 ## 🎯 Key Features
 
-- 🔭 High-resolution astronomical image viewing
-- 📝 Annotation system with filtering
-- 🤖 AI-powered chat assistance
-- 🧩 DZI tiling for optimal performance
-- 🌙 User-friendly interface for researchers and enthusiasts
+-  High-resolution astronomical image viewing
+-  Annotation system with filtering
+-  AI-powered chat assistance
+-  DZI tiling for optimal performance
+-  User-friendly interface for researchers and enthusiasts
 
 ---
 
