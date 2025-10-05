@@ -20,7 +20,7 @@ _2025 NASA Space Apps Challenge - Embiggen Your Eyes!_
 
 Procyon Explorer is a web-based high-resolution image viewer designed to democratize access to multi-gigabyte astronomical imagery for researchers and enthusiasts alike. Built for the "Embiggen Your Eyes!" challenge, our solution addresses the critical barrier of viewing and analyzing massive telescope images (billions of pixels) directly in a web browser without expensive specialized software.
 
-The platform enables users to seamlessly navigate enormous astronomical datasets using Deep Zoom Image (DZI) tiling technology, create and manage annotations with intelligent filtering, and receive AI-powered assistance through an integrated chat-bot. By breaking down multi-gigabyte images into manageable tiles, Procyon Explorer transforms how scientists, educators, and space enthusiasts explore cosmic phenomena—from the Andromeda Galaxy to distant nebulae—making cutting-edge astronomical research accessible to anyone with an Internet connection.
+The platform enables users to seamlessly navigate enormous astronomical datasets using Deep Zoom Image (DZI) tiling technology, upload new images, create and manage annotations with intelligent filtering, and receive AI-powered assistance through an integrated chat-bot. By breaking down multi-gigabyte images into manageable tiles, Procyon Explorer transforms how scientists, educators, and space enthusiasts explore cosmic phenomena—from the Andromeda Galaxy to distant nebulae—making cutting-edge astronomical research accessible to anyone with an Internet connection.
 
 ---
 
