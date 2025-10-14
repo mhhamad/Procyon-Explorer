@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import ImageSelector from './components/ImageSelector';
 import ImageViewer from './components/ImageViewer';
 import AIChatBot from './components/AIChatBot';
@@ -41,6 +41,7 @@ function App() {
   const [images, setImages] = useState(IMAGES_INITIAL);
   const [selectedImage, setSelectedImage] = useState(IMAGES_INITIAL[0]);
   const [focusAnnotation, setFocusAnnotation] = useState(null);
+  const osdViewerRef = useRef(null);
 
   // allAnnotations state
   const [allAnnotations, setAllAnnotations] = useState(() => loadAllAnnotations(IMAGES_INITIAL));
@@ -52,7 +53,7 @@ function App() {
   function handleUploadComplete(result) {
     const newImage = {
       id: `${result.dziBaseName}-${Date.now()}`,
-      name:result.dziBaseName,
+      name: result.dziBaseName,
       description: "your image",
       dziPath: result.dziPath
     };
@@ -61,7 +62,7 @@ function App() {
     setImages((prev) => [...prev, newImage]);
     setSelectedImage(newImage);
     reloadAnnotations(newImages);
-    
+
   }
 
   function handleAnnotationResultClick(annotation) {
@@ -71,7 +72,13 @@ function App() {
       if (selectedImage.id !== img.id) {
         setFocusAnnotation(null);
         setSelectedImage(img);
-        setTimeout(() => setFocusAnnotation(annotation), 1000);
+        const interval = setInterval(() => {
+          console.log("Waiting for viewer to be ready...");
+          if (osdViewerRef.current.isOpen()) {
+            clearInterval(interval);
+            setFocusAnnotation(annotation);
+          }
+        }, 200);
       } else {
         setFocusAnnotation(annotation);
       }
@@ -127,7 +134,7 @@ function App() {
 
   return (
     <div className="app">
-      <AIChatBot selectedImage={selectedImage} annotations={allAnnotations}/>
+      <AIChatBot selectedImage={selectedImage} annotations={allAnnotations} />
       <header className="app-header">
         <div className="header-content">
           <h1>Procyon Explorer</h1>
@@ -159,6 +166,7 @@ function App() {
               focusAnnotation={focusAnnotation}
               setFocusAnnotation={setFocusAnnotation}
               onAnnotationsUpdated={handleAnnotationsUpdated}
+              osdViewerRef={osdViewerRef}
             />
           ) : (
             <div style={{ padding: '2rem', color: '#fff', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
