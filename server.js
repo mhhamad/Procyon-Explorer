@@ -148,17 +148,8 @@ app.post("/upload/complete", async (req, res) => {
 // Serve static files (for DZI tiles)
 app.use("/tiles", express.static(path.join(__dirname, "public", "tiles")));
 
-// Optional: Serve the built React app from this server
-// Uncomment if you want a unified deployment
-// app.use(express.static(path.join(__dirname, "dist")));
-
-// Optional: Catch-all route for SPA (uncomment if serving React from this server)
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "dist", "index.html"));
-// });
-
 app.listen(PORT, () => {
-  console.log(`🚀 Uploader server running on http://localhost:${PORT}`);
-  console.log(`📁 Tiles directory: ${DZI_DIR}`);
-  console.log(`📊 Upload directory: ${UPLOAD_DIR}`);
+  console.log(` Uploader server running on http://localhost:${PORT}`);
+  console.log(` Tiles directory: ${DZI_DIR}`);
+  console.log(` Upload directory: ${UPLOAD_DIR}`);
 });
