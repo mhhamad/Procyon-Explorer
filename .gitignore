@@ -43,5 +43,3 @@ assets/*
 !assets/
 !assets/.gitkeep
 
-# Ignore uploads logs
-uploads/*
