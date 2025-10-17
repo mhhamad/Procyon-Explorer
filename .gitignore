@@ -45,5 +45,3 @@ assets/*
 
 # Ignore uploads logs
 uploads/*
-!uploads/.gitkeep
-uploads/metadata.json
