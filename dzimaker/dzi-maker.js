@@ -4,8 +4,8 @@ import sharp from "sharp";
 import fs from "fs/promises"; // file system library
 import path from "path";
 
-const inputImage = "./assets/test-image-1.tif"; // ← CHANGE THIS!
-const dziName = path.join("./public/tiles/test1", "image"); // ← CHANGE THIS!
+const inputImage = "./assets/test-image-2.tif"; // ← CHANGE THIS!
+const dziName = path.join("./public/tiles/test2", "image"); // ← CHANGE THIS!
 
 console.log("🚀 Starting tile generation...");
 

@@ -13,13 +13,13 @@ app.use(cors());
 app.use(express.json());
 
 // Get __dirname in ES module
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Directory for temp uploads and DZI output
 const UPLOAD_DIR = path.join(__dirname, "uploads");
 const DZI_DIR = path.join(__dirname, "public", "tiles", "uploaded");
+const METADATA_FILE = path.join(__dirname, "uploads", "metadata.json");
 
 // Ensure directories exist
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
@@ -27,6 +27,39 @@ fs.mkdirSync(DZI_DIR, { recursive: true });
 
 // Multer for chunk upload
 const upload = multer({ dest: UPLOAD_DIR });
+
+// Helper function to save metadata
+function saveMetadata(imageData) {
+  let metadata = [];
+  if (fs.existsSync(METADATA_FILE)) {
+    try {
+      metadata = JSON.parse(fs.readFileSync(METADATA_FILE, "utf8"));
+    } catch (err) {
+      console.error("Error reading metadata file:", err);
+      metadata = [];
+    }
+  }
+  metadata.push({
+    ...imageData,
+    uploadedAt: new Date().toISOString(),
+  });
+  fs.writeFileSync(METADATA_FILE, JSON.stringify(metadata, null, 2));
+}
+
+// Get all uploaded images metadata
+app.get("/images/uploaded", (req, res) => {
+  if (fs.existsSync(METADATA_FILE)) {
+    try {
+      const metadata = JSON.parse(fs.readFileSync(METADATA_FILE, "utf8"));
+      res.json(metadata);
+    } catch (err) {
+      console.error("Error reading metadata:", err);
+      res.json([]);
+    }
+  } else {
+    res.json([]);
+  }
+});
 
 // 1. Start upload: get uploadId
 app.post("/upload/init", (req, res) => {
@@ -43,7 +76,6 @@ app.post("/upload/chunk", upload.single("chunk"), (req, res) => {
   res.json({ success: true });
 });
 
-// 3. Complete upload, assemble chunks, run Sharp
 // 3. Complete upload, assemble chunks, run Sharp
 app.post("/upload/complete", async (req, res) => {
   const { uploadId, totalChunks, filename } = req.body;
@@ -87,9 +119,22 @@ app.post("/upload/complete", async (req, res) => {
 
     fs.unlinkSync(assembledPath); // Clean up assembled file
 
+    // Create full URL for the DZI file
+    const dziUrl = `http://localhost:${PORT}/tiles/uploaded/${baseName}.dzi`;
+
+    const imageData = {
+      dziBaseName: baseName,
+      dziPath: dziUrl,
+      originalFilename: filename,
+      uploadId,
+    };
+
+    // Save metadata for persistence
+    saveMetadata(imageData);
+
     res.json({
       success: true,
-      dziPath: `./tiles/uploaded/${baseName}.dzi`,
+      dziPath: dziUrl,
       dziBaseName: baseName,
     });
   } catch (err) {
@@ -103,6 +148,17 @@ app.post("/upload/complete", async (req, res) => {
 // Serve static files (for DZI tiles)
 app.use("/tiles", express.static(path.join(__dirname, "public", "tiles")));
 
+// Optional: Serve the built React app from this server
+// Uncomment if you want a unified deployment
+// app.use(express.static(path.join(__dirname, "dist")));
+
+// Optional: Catch-all route for SPA (uncomment if serving React from this server)
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "dist", "index.html"));
+// });
+
 app.listen(PORT, () => {
-  console.log(`Uploader server running on http://localhost:${PORT}`);
+  console.log(`🚀 Uploader server running on http://localhost:${PORT}`);
+  console.log(`📁 Tiles directory: ${DZI_DIR}`);
+  console.log(`📊 Upload directory: ${UPLOAD_DIR}`);
 });

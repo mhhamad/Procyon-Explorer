@@ -1,5 +1,4 @@
-// src/App.jsx
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import ImageSelector from './components/ImageSelector';
 import ImageViewer from './components/ImageViewer';
 import AIChatBot from './components/AIChatBot';
@@ -7,12 +6,21 @@ import ImageUploader from './components/ImageUploader';
 import AnnotationSearchBar from './components/AnnotationSearchBar';
 import './App.css';
 
+// Server URL - works in both dev and production
+const SERVER_URL = import.meta.env.VITE_SERVER_URL || 'http://localhost:5174';
+
 const IMAGES_INITIAL = [
   {
-    id: 'Hubble’s panoramic',
-    name: 'Hubble’s panoramic',
-    description: 'Hubble’s panoramic view of the Andromeda Galaxy',
-    dziPath: './tiles/test1/dzifile.dzi'
+    id: 'hubble-panoramic-1',
+    name: "Hubble's Panoramic",
+    description: "Hubble's panoramic view of the Andromeda Galaxy",
+    dziPath: './tiles/test1/image.dzi'
+  },
+  {
+    id: 'hubble-panoramic-2',
+    name: "Hubble's Panoramic",
+    description: "Hubble's panoramic view of the Andromeda Galaxy",
+    dziPath: './tiles/test2/image.dzi'
   }
 ];
 
@@ -46,6 +54,32 @@ function App() {
   // allAnnotations state
   const [allAnnotations, setAllAnnotations] = useState(() => loadAllAnnotations(IMAGES_INITIAL));
 
+  // Load previously uploaded images on mount
+  useEffect(() => {
+    async function loadUploadedImages() {
+      try {
+        const response = await fetch(`${SERVER_URL}/images/uploaded`);
+        const uploadedMetadata = await response.json();
+        
+        if (uploadedMetadata.length > 0) {
+          const uploadedImages = uploadedMetadata.map(meta => ({
+            id: `${meta.dziBaseName}-${meta.uploadId}`,
+            name: meta.dziBaseName,
+            description: `Uploaded: ${meta.originalFilename}`,
+            dziPath: meta.dziPath
+          }));
+          
+          setImages(prev => [...prev, ...uploadedImages]);
+          console.log(`✅ Loaded ${uploadedImages.length} previously uploaded images`);
+        }
+      } catch (err) {
+        console.error('Failed to load uploaded images:', err);
+      }
+    }
+    
+    loadUploadedImages();
+  }, []);
+
   function reloadAnnotations(imgs) {
     setAllAnnotations(loadAllAnnotations(imgs));
   }
@@ -54,15 +88,14 @@ function App() {
     const newImage = {
       id: `${result.dziBaseName}-${Date.now()}`,
       name: result.dziBaseName,
-      description: "your image",
-      dziPath: result.dziPath
+      description: "Your uploaded image",
+      dziPath: result.dziPath // Full URL from server
     };
-    console.log("New image added:", newImage);
+    console.log("✅ New image added:", newImage);
     const newImages = [...images, newImage];
-    setImages((prev) => [...prev, newImage]);
+    setImages(newImages);
     setSelectedImage(newImage);
     reloadAnnotations(newImages);
-
   }
 
   function handleAnnotationResultClick(annotation) {
@@ -74,7 +107,7 @@ function App() {
         setSelectedImage(img);
         const interval = setInterval(() => {
           console.log("Waiting for viewer to be ready...");
-          if (osdViewerRef.current.isOpen()) {
+          if (osdViewerRef.current && osdViewerRef.current.isOpen()) {
             clearInterval(interval);
             setFocusAnnotation(annotation);
           }
@@ -85,11 +118,11 @@ function App() {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     reloadAnnotations(images);
   }, [images]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     function handleStorageChange(e) {
       if (e.key && e.key.startsWith('annotations:')) {
         reloadAnnotations(images);
@@ -99,7 +132,7 @@ function App() {
     return () => window.removeEventListener('storage', handleStorageChange);
   }, [images]);
 
-  // ---------- New: stable, robust updater ----------
+  // Stable, robust updater
   const handleAnnotationsUpdated = useCallback((imageId, annotationsForImage) => {
     setAllAnnotations(prev => {
       // keep other images' annotations
@@ -109,7 +142,6 @@ function App() {
       const mapped = (annotationsForImage || []).map(a => ({ ...a, imageId }));
 
       // quick equality check to avoid needless state updates:
-      // build map of previous entries for this image by id
       const prevThis = prev.filter(a => a.imageId === imageId);
       if (prevThis.length === mapped.length) {
         const prevMap = new Map(prevThis.map(a => [a.id, a]));
@@ -122,15 +154,13 @@ function App() {
           }
         }
         if (identical) {
-          // No change — return previous state object to avoid rerender churn
           return prev;
         }
       }
 
-      // otherwise produce a new consolidated array
       return [...others, ...mapped];
     });
-  }, []); // stable identity
+  }, []);
 
   return (
     <div className="app">
@@ -149,7 +179,6 @@ function App() {
       </div>
       <div className="main-content">
         <div>
-
           <ImageSelector
             images={images}
             selectedImage={selectedImage}
@@ -178,7 +207,7 @@ function App() {
       <footer className="app-footer">
         <p>NASA Space Apps Challenge Demo • Built with React & OpenSeadragon</p>
       </footer>
-    </div >
+    </div>
   );
 }
 
