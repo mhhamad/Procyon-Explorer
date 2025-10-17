@@ -42,3 +42,6 @@ assets/*
 # But keep the Assets folder itself
 !assets/
 !assets/.gitkeep
+
+# Ignore uploads logs
+uploads
