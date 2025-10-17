@@ -11,7 +11,10 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "make-tiles": "node dzimaker/dzi-maker.js"
+    "make-tiles": "node dzimaker/dzi-maker.js",
+    "server": "node server.js",
+    "start": "concurrently \"npm run dev\" \"npm run server\"",
+    "start:prod": "npm run build && concurrently \"npm run server\" \"npm run preview\""
   },
   "dependencies": {
     "cors": "^2.8.5",
@@ -28,6 +31,7 @@
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^8.2.2",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",

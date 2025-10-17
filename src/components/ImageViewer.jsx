@@ -6,9 +6,9 @@ import { createPortal } from 'react-dom';
 import Labeling from './Labeling';
 import './ImageViewer.css';
 
-function ImageViewer({ image, focusAnnotation, setFocusAnnotation, onAnnotationsUpdated }) {
+function ImageViewer({ image, focusAnnotation, setFocusAnnotation, onAnnotationsUpdated ,osdViewerRef}) {
   const viewerRef = useRef(null);
-  const osdViewerRef = useRef(null);
+  
   const [osdReady, setOsdReady] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
