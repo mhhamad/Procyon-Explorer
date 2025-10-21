@@ -45,3 +45,6 @@ assets/*
 
 # Ignore uploads logs
 uploads/
+
+# Ignore environment variable files
+.env
