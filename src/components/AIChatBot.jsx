@@ -73,7 +73,7 @@ const AIChatBot = ({selectedImage, annotations}) => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}` // make sure this is set
+                'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_TOKEN}` // make sure this is set
             },
             body: JSON.stringify({
                 messages,

@@ -26,11 +26,11 @@ The platform enables users to seamlessly navigate enormous astronomical datasets
 
 ## 🎯 Key Features
 
--  High-resolution astronomical image viewing
--  Annotation system with filtering
--  AI-powered chat assistance
--  DZI tiling for optimal performance
--  User-friendly interface for researchers and enthusiasts
+- High-resolution astronomical image viewing
+- Annotation system with filtering
+- AI-powered chat assistance
+- DZI tiling for optimal performance
+- User-friendly interface for researchers and enthusiasts
 
 ---
 
@@ -81,9 +81,23 @@ Make sure you have the following installed on your machine:
 
 4. **Run the Application**
 
-   1. 🖥️ Frontend:
+   1. Frontend and Backend:
 
-      - 🛠️ Option 1: Development Mode (Recommended for Development)
+   - Development:
+
+   ```bash
+   npm start
+   ```
+
+   - Production:
+
+   ```bash
+   npm run start:prod
+   ```
+
+   2. 🖥️ Frontend (only):
+
+      - 🛠️ Option 1: Development Mode
 
         ```bash
         npm run dev
@@ -110,7 +124,7 @@ Make sure you have the following installed on your machine:
 
         - Use this for: Testing the optimized production version
 
-   2. 🔧 Backend Server:
+   3. 🔧 Backend Server (Only):
       - Rune server
       ```bash
         node server.js

@@ -5,9 +5,11 @@ import sharp from "sharp";
 import cors from "cors";
 import multer from "multer";
 import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-const PORT = 5174; // Use a different port than Vite
+const PORT = process.env.PORT || 5174; // Use a different port than Vite
 
 app.use(cors());
 app.use(express.json());
