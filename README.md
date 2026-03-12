@@ -1,5 +1,7 @@
 # Procyon Explorer⭐✨
 
+![ProcyoneWP](https://github.com/mhhamad/Procyon-Explorer/blob/main/assets/ProcyonWP.png)
+
 ## 🏆 Competition Submission
 
 _2025 NASA Space Apps Challenge - Embiggen Your Eyes!_
@@ -7,16 +9,21 @@ _2025 NASA Space Apps Challenge - Embiggen Your Eyes!_
 ## 👥 Team Information
 
 - **Team name:** Procyon
+
 - **Members:**
-  - Yaman Adeeb
   - Mahmood Hamad
+  - Yaman Adeeb
+
 - **Contact:**
-  - its.yamanadeeb.0@gmail.com
   - mhhamad.se@gmail.com
+  - its.yamanadeeb.0@gmail.com
 
 ---
 
 ## 📖 App Summary
+
+![Screenshot](https://github.com/mhhamad/Procyon-Explorer/blob/main/assets/Screenshot.png)
+
 
 Procyon Explorer is a web-based high-resolution image viewer designed to democratize access to multi-gigabyte astronomical imagery for researchers and enthusiasts alike. Built for the "Embiggen Your Eyes!" challenge, our solution addresses the critical barrier of viewing and analyzing massive telescope images (billions of pixels) directly in a web browser without expensive specialized software.
 
