@@ -9,14 +9,14 @@ _2025 NASA Space Apps Challenge - Embiggen Your Eyes!_
 - **Team name:** Procyon
 
 - **Members:**
-  - Mahmood Hamad
+  - Mahmoud Hamad
   - Yaman Adeeb
 
 - **Contact:**
   - mhhamad.se@gmail.com
   - its.yamanadeeb.0@gmail.com
 
----
+
 
 ## 📖 App Summary
 
@@ -27,7 +27,7 @@ Procyon Explorer is a web-based high-resolution image viewer designed to democra
 
 The platform enables users to seamlessly navigate enormous astronomical datasets using Deep Zoom Image (DZI) tiling technology, upload new images, create and manage annotations with intelligent filtering, and receive AI-powered assistance through an integrated chat-bot. By breaking down multi-gigabyte images into manageable tiles, Procyon Explorer transforms how scientists, educators, and space enthusiasts explore cosmic phenomena—from the Andromeda Galaxy to distant nebulae—making cutting-edge astronomical research accessible to anyone with an Internet connection.
 
----
+
 
 ## 🎯 Key Features
 
@@ -37,7 +37,7 @@ The platform enables users to seamlessly navigate enormous astronomical datasets
 - DZI tiling for optimal performance
 - User-friendly interface for researchers and enthusiasts
 
----
+
 
 ## 🚀 How to Run This Project Locally
 
@@ -77,7 +77,8 @@ Make sure you have the following installed on your machine:
 
 3. **Get The Image Ready**
 
-   1. Add Image(s) to _assets_ file, try (https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/#:~:text=In%20January%20of%202025%2C%20NASA&#x27;s,were%20challenging%20to%20stitch%20together.)
+   1. Add Image(s) to dzimaker file, try [Hubble's Panoramic image](https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-31/#:~:text=In%20January%20of%202025%2C%20NASA&#x27;s,were%20challenging%20to%20stitch%20together.)
+
    2. Make the tiles
 
    ```bash
