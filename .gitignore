@@ -32,8 +32,6 @@ dzifile_files/
 public/tiles
 
 # Ignore ALL files in Assets folder (images are too large)
-assets/*
-*.png
 *.jpg
 *.jpeg
 *.gif
