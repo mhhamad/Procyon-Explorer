@@ -1,6 +1,6 @@
 # Procyon Explorer⭐✨
 
-![ProcyoneWP](https://github.com/mhhamad/Procyon-Explorer/blob/main/assets/ProcyonWP.png)
+![ProcyoneWP](https://github.com/mhhamad/Procyon-Explorer/blob/master/assets/ProcyonWP.png)
 
 ## 🏆 Competition Submission
 
@@ -22,7 +22,7 @@ _2025 NASA Space Apps Challenge - Embiggen Your Eyes!_
 
 ## 📖 App Summary
 
-![Screenshot](https://github.com/mhhamad/Procyon-Explorer/blob/main/assets/Screenshot.png)
+![Screenshot](https://github.com/mhhamad/Procyon-Explorer/blob/master/assets/Screenshot.png)
 
 
 Procyon Explorer is a web-based high-resolution image viewer designed to democratize access to multi-gigabyte astronomical imagery for researchers and enthusiasts alike. Built for the "Embiggen Your Eyes!" challenge, our solution addresses the critical barrier of viewing and analyzing massive telescope images (billions of pixels) directly in a web browser without expensive specialized software.
