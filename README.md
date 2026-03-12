@@ -1,7 +1,5 @@
 # Procyon Explorer⭐✨
 
-![ProcyoneWP](https://github.com/mhhamad/Procyon-Explorer/blob/master/assets/ProcyonWP.png)
-
 ## 🏆 Competition Submission
 
 _2025 NASA Space Apps Challenge - Embiggen Your Eyes!_
@@ -136,3 +134,6 @@ Make sure you have the following installed on your machine:
       ```bash
         node server.js
       ```
+## Poster
+
+![ProcyoneWP](https://github.com/mhhamad/Procyon-Explorer/blob/master/assets/ProcyonWP.png)
