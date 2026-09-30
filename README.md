@@ -1,6 +1,7 @@
 # Procyon Explorer⭐✨
 
 ## 🏆 Competition Submission
+1st Place — 2025 NASA Space Apps Challenge (Local Ar-Ramtha)
 
 _2025 NASA Space Apps Challenge - Embiggen Your Eyes!_
 
