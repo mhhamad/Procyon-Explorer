@@ -17,8 +17,9 @@ _2025 NASA Space Apps Challenge - Embiggen Your Eyes!_
   - mhhamad.se@gmail.com
   - its.yamanadeeb.0@gmail.com
 
+## 🌐 Live Demo
+[Procyon Explorer — Live Demo](https://mhhamad.github.io/nasa-space-app-project)
 
-##[Procyon Explorer — Live Demo](https://mhhamad.github.io/nasa-space-app-project)
 ## 📖 App Summary
 
 ![Screenshot](https://github.com/mhhamad/Procyon-Explorer/blob/master/assets/Screenshot.png)
